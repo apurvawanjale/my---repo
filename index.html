@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Carpooling App</title>
+
+    <!-- Embedded CSS -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFFFFF;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #FF4C00; /* Orange */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px;
+        }
+
+        /* Banner Section */
+        .banner {
+            background-color: #FF4C00; /* Orange */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .banner h1 {
+            font-size: 36px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .banner p {
+            font-size: 20px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* Ride Search Section */
+        .search-rides {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-rides h2 {
+            font-size: 24px;
+            color: #FF4C00;
+            margin-bottom: 20px;
+        }
+
+        .search-rides label {
+            font-size: 16px;
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+
+        .search-rides input,
+        .search-rides select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .search-rides button {
+            background-color: #FF4C00; /* Orange */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .search-rides button:hover {
+            background-color: #E03E00;
+        }
+
+        /* Ride Match Section */
+        .matching {
+            margin-top: 30px;
+        }
+
+        .matching h2 {
+            font-size: 24px;
+            color: #FF4C00;
+            margin-bottom: 20px;
+        }
+
+        .ride-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .ride-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .ride-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ride-card h3 {
+            font-size: 18px;
+            color: #FF4C00;
+        }
+
+        .ride-card p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .ride-card button {
+            background-color: #FF4C00;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .ride-card button:hover {
+            background-color: #E03E00;
+        }
+
+        /* Profile Section */
+        .user-profile {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-profile h2 {
+            color: #FF4C00;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .user-profile p {
+            font-size: 18px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .user-profile button {
+            background-color: #FF4C00;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .user-profile button:hover {
+            background-color: #E03E00;
+        }
+
+        /* Wallet Section */
+        .wallet-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .wallet-section h2 {
+            font-size: 24px;
+            color: #FF4C00;
+            margin-bottom: 20px;
+        }
+
+        .wallet-section p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .wallet-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wallet-section ul li {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .wallet-section button {
+            background-color: #FF4C00;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .wallet-section button:hover {
+            background-color: #E03E00;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h3 {
+            font-size: 24px;
+            color: #FF4C00;
+        }
+
+        .modal-content label {
+            font-size: 16px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .modal-content button {
+            background-color: #FF4C00;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .modal-content button:hover {
+            background-color: #E03E00;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #FF4C00;
+            color: white;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rides">Rides</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#wallet">My Wallet</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Homepage Banner -->
+        <section id="home" class="banner">
+            <h1>Welcome to College Carpooling</h1>
+            <p>Save money, save the environment, and connect with your fellow students.</p>
+        </section>
+
+        <!-- Ride Search Section -->
+        <section id="rides" class="search-rides">
+            <h2>Find a Ride</h2>
+            <form id="ride-search-form">
+                <label for="pickup">Pickup Location:</label>
+                <input type="text" id="pickup" name="pickup" required>
+
+                <label for="dropoff">Dropoff Location:</label>
+                <input type="text" id="dropoff" name="dropoff" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="gender-preference">Gender Preference:</label>
+                <select id="gender-preference" name="gender-preference">
+                    <option value="any">Any Gender</option>
+                    <option value="female">Female Only</option>
+                </select>
+
+                <button type="submit">Search Rides</button>
+            </form>
+        </section>
+
+        <!-- Carpool Matching Section -->
+        <section id="matches" class="matching">
+            <h2>Your Ride Matches</h2>
+            <div class="ride-cards">
+                <div class="ride-card">
+                    <h3>Ride with Raj</h3>
+                    <p>From: Warje</p>
+                    <p>To: Sinhgad College Of Engineering</p>
+                    <p>Time: 9:00 AM</p>
+                    <p>Gender: Male</p>
+                    <button onclick="joinRide()">Join Ride</button>
+                </div>
+                <div class="ride-card">
+                    <h3>Ride with Sara</h3>
+                    <p>From: Karvenagar</p>
+                    <p>To: Sinhgad College Of Engineering</p>
+                    <p>Time: 9:00 AM</p>
+                    <p>Gender: Female</p>
+                    <button onclick="joinRide()">Join Ride</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="user-profile">
+            <h2>Your Profile</h2>
+            <p>Name: <span id="username">Sae Patil</span></p>
+            <p>Email: <span id="user-email">sae.patil@student.edu</span></p>
+            <p>Gender: <span id="user-gender">Female</span></p>
+            <button onclick="editProfile()">Edit Profile</button>
+        </section>
+
+        <!-- Wallet Section -->
+        <section id="wallet" class="wallet-section">
+            <h2>Your Wallet</h2>
+            <p>Wallet Balance: <strong id="wallet-balance">500</strong> Credits</p>
+            <p>Transaction History:</p>
+            <ul id="transaction-history">
+                <li>Deposit: +300 Credits</li>
+                <li>Ride Payment: -150 Credits</li>
+            </ul>
+            <button onclick="openDepositModal()">Deposit Funds</button>
+            <button onclick="makePayment()">Pay for Ride</button>
+        </section>
+
+        <!-- Deposit Modal -->
+        <div id="deposit-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeDepositModal()">&times;</span>
+                <h3>Deposit Funds into Wallet</h3>
+                <form id="deposit-form">
+                    <label for="deposit-amount">Amount to Deposit (in Credits):</label>
+                    <input type="number" id="deposit-amount" name="deposit-amount" min="1" required>
+                    <button type="submit">Deposit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 College Carpooling. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <!-- JavaScript Section -->
+    <script>
+        // Function to open the deposit modal
+        function openDepositModal() {
+            document.getElementById("deposit-modal").style.display = "flex";
+        }
+
+        // Function to close the deposit modal
+        function closeDepositModal() {
+            document.getElementById("deposit-modal").style.display = "none";
+        }
+
+        // Handle ride search form submission
+        document.getElementById("ride-search-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            // Add your ride search logic here (e.g., filter rides based on input)
+            alert("Searching for rides...");
+        });
+
+        // Handle profile edit (Placeholder logic)
+        function editProfile() {
+            alert("Edit Profile clicked!");
+        }
+
+        // Handle joining a ride (Placeholder logic)
+        function joinRide() {
+            alert("Joined the ride successfully!");
+        }
+
+        // Handle making a payment (Placeholder logic)
+        function makePayment() {
+            const balance = parseInt(document.getElementById("wallet-balance").innerText);
+            if (balance < 150) {
+                alert("Insufficient funds!");
+            } else {
+                alert("Payment successful!");
+                document.getElementById("wallet-balance").innerText = balance - 150;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
